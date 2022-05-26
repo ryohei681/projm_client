@@ -29,7 +29,7 @@ const Home: NextPage = () => {
           ITエンジニアのための制作物投稿プラットフォーム
         </h2>
         <Link href="/signup" passHref>
-          <button className={styles.signUpBtn}>Sign up now</button>
+          <button className={styles.signUpBtn}>Start now</button>
         </Link>
       </main>
     </div>

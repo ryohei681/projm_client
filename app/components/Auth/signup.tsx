@@ -6,7 +6,7 @@ import { css } from '@emotion/react'
 
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from 'config/firebaseApp.config'
-import { useAuthContext } from '../src/context/AuthContext'
+import { useAuthContext } from 'lib/AuthContext'
 
 const Signup = () => {
   const router = useRouter()

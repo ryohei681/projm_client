@@ -4,6 +4,7 @@ import styles from 'styles/Home.module.css'
 import CheckIcon from '@mui/icons-material/Check'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import Link from 'next/link'
+import Sidebar from 'components/layout/sidebar'
 
 const Home: NextPage = () => {
   return (
@@ -19,8 +20,12 @@ const Home: NextPage = () => {
         ></link>
       </Head>
 
-      <main className={styles.main}>
-        {/* <CheckIcon className={styles.CheckIcon}></CheckIcon> */}
+      <main>
+        {/* sidebar */}
+        <Sidebar />
+      </main>
+
+      {/* <main className={styles.main}>
         <CheckCircleOutlineIcon
           className={styles.CheckIcon}
         ></CheckCircleOutlineIcon>
@@ -31,7 +36,7 @@ const Home: NextPage = () => {
         <Link href="/signup" passHref>
           <button className={styles.signUpBtn}>Start now</button>
         </Link>
-      </main>
+      </main> */}
     </div>
   )
 }

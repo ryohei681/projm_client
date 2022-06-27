@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Alert, Button, InputLabel, Snackbar, TextField } from '@mui/material'
-import { css } from '@emotion/react'
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
+import styles from 'styles/Auth.module.css'
 
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useAuthContext } from 'lib/AuthContext'
@@ -17,7 +18,7 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     await signInWithEmailAndPassword(auth, email, password)
-    router.push('/')
+    router.push('main')
   }
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value)
@@ -30,15 +31,8 @@ const Login = () => {
   }
 
   return (
-    <div
-      css={css`
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-flow: column;
-      `}
-    >
-      <Snackbar
+    <div className={styles.signup}>
+      {/* <Snackbar
         open={isLoggedIn}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         autoHideDuration={3000}
@@ -56,69 +50,42 @@ const Login = () => {
         key={'top' + 'center'}
       >
         <Alert severity="warning">ログインしてください</Alert>
-      </Snackbar>
-      <h2>ログイン</h2>
-      <form onSubmit={handleSubmit}>
-        <div
-          css={css`
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          `}
-        >
-          <InputLabel>メールアドレス</InputLabel>
-          <TextField
-            name="email"
+      </Snackbar> */}
+      <AccountCircleOutlinedIcon
+        className={styles.accountIcon}
+      ></AccountCircleOutlinedIcon>
+      <h1 className={styles.signupTitle}>Log in</h1>
+      <form className={styles.signupForm} onSubmit={handleSubmit}>
+        <div>
+          <input
+            className={styles.emailBox}
             type="email"
-            size="small"
+            name="email"
+            placeholder="email"
             onChange={handleChangeEmail}
-            css={css`
-              padding-left: 12px;
-            `}
-          />
+            required
+          ></input>
         </div>
-        <div
-          css={css`
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: 16px;
-          `}
-        >
-          <InputLabel>パスワード</InputLabel>
-          <TextField
-            name="password"
+        <div>
+          <input
+            className={styles.passwordBox}
             type="password"
-            size="small"
+            name="password"
+            placeholder="password"
             onChange={handleChangePassword}
-            css={css`
-              padding-left: 12px;
-            `}
-          />
+            required
+          ></input>
         </div>
-        <div
-          css={css`
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 16px;
-          `}
-        >
-          <Button type="submit" variant="outlined">
-            ログイン
-          </Button>
+        <div className={styles.signupBtnPlace}>
+          <button type="submit" className={styles.signupBtn}>
+            Log in
+          </button>
         </div>
-        <div
-          css={css`
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 24px;
-          `}
-        >
+        <div className={styles.alreadySignup}>
           ユーザ登録は
           <Link href={'/signup'}>
             <a>こちら</a>
           </Link>
-          から
         </div>
       </form>
     </div>

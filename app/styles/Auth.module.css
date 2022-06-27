@@ -54,10 +54,7 @@
 }
 
 .alreadySignup {
-  display: flex;
-  align-items: center;
-  flex-flow: column;
-  width: 100%;
+  text-align: center;
   margin-top: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }

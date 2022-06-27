@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Alert, Button, InputLabel, Snackbar, TextField } from '@mui/material'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
-import styles from 'styles/Signup.module.css'
+import styles from 'styles/Auth.module.css'
 
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from 'config/firebaseApp.config'
@@ -17,9 +17,13 @@ const Signup = () => {
   const [password, setPassword] = useState('')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    await createUserWithEmailAndPassword(auth, email, password)
-    router.push('/main')
+    try {
+      e.preventDefault()
+      await createUserWithEmailAndPassword(auth, email, password)
+      router.push('/main')
+    } catch (error) {
+      alert(error)
+    }
   }
   const handleClose = async () => {
     await router.push('/')
@@ -32,7 +36,7 @@ const Signup = () => {
   }
   return (
     <div className={styles.signup}>
-      <Snackbar
+      {/* <Snackbar
         open={isLoggedIn}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         autoHideDuration={3000}
@@ -42,7 +46,7 @@ const Signup = () => {
         <Alert onClose={handleClose} severity="warning">
           すでにログインしています
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
       <AccountCircleOutlinedIcon
         className={styles.accountIcon}
       ></AccountCircleOutlinedIcon>

@@ -6,7 +6,8 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import styles from 'styles/Auth.module.css'
 
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from 'config/firebaseApp.config'
+import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore'
+import { auth, firestore } from 'config/firebaseApp.config'
 import { useAuthContext } from 'lib/AuthContext'
 
 const Signup = () => {
@@ -20,7 +21,21 @@ const Signup = () => {
     try {
       e.preventDefault()
       await createUserWithEmailAndPassword(auth, email, password)
-      router.push('/main')
+      if (user != undefined && user != null) {
+        const docRef = doc(firestore, 'users', user.uid)
+        const docSnap = await getDoc(docRef)
+        if (!docSnap.exists()) {
+          await setDoc(docRef, {
+            name: user.displayName,
+            email: user.email,
+            // username: user.displayName.split(' ').join('').toLocaleLowerCase(),
+            userImg: user.photoURL,
+            uid: user.uid,
+            timestamp: serverTimestamp(),
+          })
+        }
+      }
+      router.push('/')
     } catch (error) {
       alert(error)
     }

@@ -16,9 +16,13 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    await signInWithEmailAndPassword(auth, email, password)
-    router.push('main')
+    try {
+      e.preventDefault()
+      await signInWithEmailAndPassword(auth, email, password)
+      router.push('/')
+    } catch (error) {
+      alert(error)
+    }
   }
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value)

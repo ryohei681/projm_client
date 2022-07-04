@@ -7,7 +7,7 @@ const Logo: NextPage = () => {
   return (
     <div className={styles.logo}>
       <CheckIcon className={styles.CheckIcon}></CheckIcon>
-      <h1 className={styles.title}>projm</h1>
+      <h1 className={styles.title}>folio</h1>
     </div>
   )
 }

@@ -3,16 +3,16 @@
   justify-content: space-between;
   align-items: center;
   flex-flow: column;
-  padding: 10rem 5rem 0 5rem;
+  padding: 10rem 3rem 0 3rem;
 }
 
 .accountIcon {
-  font-size: 7rem;
+  font-size: 4rem;
   color: #28b492;
 }
 
 .signupTitle {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin-top: 0.3rem;
   color: #28b492;
 }
@@ -25,7 +25,7 @@
 .emailBox,
 .passwordBox {
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 0.7rem 1rem;
   margin-top: 1.5rem;
   border-radius: 2rem;
@@ -45,7 +45,7 @@
   color: #fff;
   padding: 0.8rem 2rem;
   border-radius: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .signupBtn:hover {
@@ -56,5 +56,5 @@
 .alreadySignup {
   text-align: center;
   margin-top: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }

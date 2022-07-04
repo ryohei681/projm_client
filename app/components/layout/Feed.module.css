@@ -1,0 +1,19 @@
+.feed {
+  border-left: 1px solid rgb(174, 174, 174);
+  border-right: 1px solid rgb(174, 174, 174);
+  flex-grow: 1;
+  max-width: 720px;
+}
+
+@media screen and (min-width: 640px) {
+  .feed {
+    margin-left: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .feed {
+    margin-left: 310px;
+    min-width: 720px;
+  }
+}

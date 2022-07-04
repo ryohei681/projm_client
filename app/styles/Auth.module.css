@@ -1,0 +1,60 @@
+.signup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column;
+  padding: 10rem 5rem 0 5rem;
+}
+
+.accountIcon {
+  font-size: 7rem;
+  color: #28b492;
+}
+
+.signupTitle {
+  font-size: 3.5rem;
+  margin-top: 0.3rem;
+  color: #28b492;
+}
+
+.signupForm {
+  padding-top: 0.6rem;
+  width: 100%;
+}
+
+.emailBox,
+.passwordBox {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 0.7rem 1rem;
+  margin-top: 1.5rem;
+  border-radius: 2rem;
+  background-color: transparent;
+}
+
+.signupBtnPlace {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  margin-top: 1.5rem;
+}
+
+.signupBtn {
+  border: 2px solid #28b492;
+  background-color: #28b492;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+}
+
+.signupBtn:hover {
+  background-color: #fff;
+  color: #28b492;
+}
+
+.alreadySignup {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}

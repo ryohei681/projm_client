@@ -1,0 +1,42 @@
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2d3748;
+  font-size: 1.35rem;
+
+  cursor: pointer;
+  border-radius: 9999px;
+  width: 52px;
+  height: 52px;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.iconText {
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .menuItem {
+    justify-content: flex-start;
+
+    width: auto;
+    height: auto;
+    padding: 0.75rem 0rem;
+  }
+
+  .iconText {
+    display: inline;
+  }
+}
+
+.menuItem:hover {
+  background-color: #c7ced7;
+}
+
+.icon {
+  font-size: 1.9rem;
+}

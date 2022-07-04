@@ -4,7 +4,8 @@ import styles from 'styles/Home.module.css'
 import CheckIcon from '@mui/icons-material/Check'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import Link from 'next/link'
-import Sidebar from 'components/layout/sidebar'
+import Sidebar from 'components/layout/Sidebar'
+import Feed from 'components/layout/Feed'
 
 const Home: NextPage = () => {
   return (
@@ -23,6 +24,9 @@ const Home: NextPage = () => {
       <main>
         {/* sidebar */}
         <Sidebar />
+
+        {/* feed */}
+        <Feed />
       </main>
 
       {/* <main className={styles.main}>

@@ -1,14 +1,6 @@
-.container {
-  padding: 0 4rem;
-}
-
-.main {
-  min-height: 100vh;
-  padding-top: 10rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* .container {
+  padding: 1rem 2rem;
+} */
 
 .CheckIcon {
   font-size: 5rem;

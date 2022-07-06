@@ -67,7 +67,7 @@ const Signup = () => {
       ></AccountCircleOutlinedIcon>
       <h1 className={styles.signupTitle}>Sign up</h1>
       <form className={styles.signupForm} onSubmit={handleSubmit}>
-        <div>
+        <div className={styles.emailBoxPosition}>
           <input
             className={styles.emailBox}
             type="email"
@@ -77,7 +77,7 @@ const Signup = () => {
             required
           ></input>
         </div>
-        <div>
+        <div className={styles.passwordBoxPosition}>
           <input
             className={styles.passwordBox}
             type="password"
@@ -94,7 +94,7 @@ const Signup = () => {
         </div>
         <div className={styles.alreadySignup}>
           すでに登録している人は
-          <Link href={'/login'}>
+          <Link href={'/signin'}>
             <a>こちら</a>
           </Link>
         </div>

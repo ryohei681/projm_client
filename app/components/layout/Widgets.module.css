@@ -1,0 +1,16 @@
+.widgets {
+  display: none;
+  width: 370px;
+}
+
+@media screen and (min-width: 1280px) {
+  .widgets {
+    width: 600px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .widgets {
+    display: inline;
+  }
+}

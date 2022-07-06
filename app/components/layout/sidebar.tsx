@@ -52,7 +52,7 @@ const Sidebar = (props: Props) => {
         </>
       ) : (
         <>
-          <div className={styles.signIn} onClick={() => router.push('/login')}>
+          <div className={styles.signIn} onClick={() => router.push('/signin')}>
             SignIn
           </div>
         </>

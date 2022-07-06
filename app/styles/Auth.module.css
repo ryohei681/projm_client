@@ -18,13 +18,23 @@
 }
 
 .signupForm {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
   padding-top: 0.6rem;
   width: 100%;
+}
+
+.passwordBoxPosition,
+.emailBoxPosition {
+  display: flex;
+  justify-content: center;
 }
 
 .emailBox,
 .passwordBox {
   width: 100%;
+  max-width: 30rem;
   font-size: 1rem;
   padding: 0.7rem 1rem;
   margin-top: 1.5rem;
@@ -51,6 +61,10 @@
 .signupBtn:hover {
   background-color: #fff;
   color: #28b492;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .alreadySignup {

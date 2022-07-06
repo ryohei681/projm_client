@@ -27,6 +27,11 @@
 .postBtn:hover {
   background-color: #fff;
   color: #28b492;
+
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .signOut,
@@ -35,6 +40,7 @@
   border-bottom: 1px solid rgb(0, 0, 0);
   margin-top: 3rem;
   margin-left: 0.2rem;
+  cursor: pointer;
 
   display: none;
 }

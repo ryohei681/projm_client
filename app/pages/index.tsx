@@ -6,6 +6,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import Link from 'next/link'
 import Sidebar from 'components/layout/Sidebar'
 import Feed from 'components/layout/Feed'
+import Widgets from 'components/layout/Widgets'
 
 const Home: NextPage = () => {
   return (
@@ -27,6 +28,9 @@ const Home: NextPage = () => {
 
         {/* feed */}
         <Feed />
+
+        {/* Widgets */}
+        <Widgets />
       </main>
 
       {/* <main className={styles.main}>

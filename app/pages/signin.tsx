@@ -9,7 +9,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useAuthContext } from 'lib/AuthContext'
 import { auth } from 'config/firebaseApp.config'
 
-const Login = () => {
+const Signin = () => {
   const { user } = useAuthContext()
   const isLoggedIn = !!user
   const router = useRouter()
@@ -58,9 +58,9 @@ const Login = () => {
       <AccountCircleOutlinedIcon
         className={styles.accountIcon}
       ></AccountCircleOutlinedIcon>
-      <h1 className={styles.signupTitle}>Log in</h1>
+      <h1 className={styles.signupTitle}>Sign in</h1>
       <form className={styles.signupForm} onSubmit={handleSubmit}>
-        <div>
+        <div className={styles.emailBoxPosition}>
           <input
             className={styles.emailBox}
             type="email"
@@ -70,7 +70,7 @@ const Login = () => {
             required
           ></input>
         </div>
-        <div>
+        <div className={styles.passwordBoxPosition}>
           <input
             className={styles.passwordBox}
             type="password"
@@ -82,7 +82,7 @@ const Login = () => {
         </div>
         <div className={styles.signupBtnPlace}>
           <button type="submit" className={styles.signupBtn}>
-            Log in
+            Sign in
           </button>
         </div>
         <div className={styles.alreadySignup}>
@@ -96,4 +96,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Signin

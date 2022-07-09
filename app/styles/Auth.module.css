@@ -26,13 +26,15 @@
 }
 
 .passwordBoxPosition,
-.emailBoxPosition {
+.emailBoxPosition,
+.usernameBoxPosition {
   display: flex;
   justify-content: center;
 }
 
 .emailBox,
-.passwordBox {
+.passwordBox,
+.usernameBox {
   width: 100%;
   max-width: 30rem;
   font-size: 1rem;

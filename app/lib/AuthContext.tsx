@@ -5,10 +5,11 @@ import {
   useContext,
   useEffect,
 } from 'react'
-import { onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged, updateProfile } from 'firebase/auth'
 import type { User } from 'firebase/auth'
 import { useRouter } from 'next/router'
-import { auth } from 'config/firebaseApp.config'
+import { auth, firestore } from 'config/firebaseApp.config'
+import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore'
 
 export type UserType = User | null
 
@@ -36,6 +37,23 @@ export const AuthProvider = ({ children }: AuthProps) => {
   useEffect(() => {
     const authStateChanged = onAuthStateChanged(auth, async (user) => {
       setUser(user)
+      console.log(user)
+      console.log('pass1')
+      if (user != undefined && user != null) {
+        const docRef = doc(firestore, 'users', user?.uid)
+        const docSnap = await getDoc(docRef)
+        if (!docSnap.exists()) {
+          console.log('pass2')
+          await setDoc(docRef, {
+            name: user.displayName,
+            email: user.email,
+            // username: user.displayName.split(' ').join('').toLocaleLowerCase(),
+            userImg: user.photoURL,
+            uid: user.uid,
+            timestamp: serverTimestamp(),
+          })
+        }
+      }
     })
     return () => {
       authStateChanged()

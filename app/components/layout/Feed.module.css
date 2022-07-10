@@ -2,7 +2,7 @@
   border-left: 1px solid rgb(174, 174, 174);
   border-right: 1px solid rgb(174, 174, 174);
   flex-grow: 1;
-  max-width: 720px;
+  max-width: 600px;
 }
 
 @media screen and (min-width: 640px) {
@@ -14,6 +14,23 @@
 @media screen and (min-width: 1280px) {
   .feed {
     margin-left: 310px;
-    min-width: 720px;
+    min-width: 600px;
   }
+}
+
+.Home {
+  position: sticky;
+  padding: 0.5rem 0.75rem;
+  top: 0;
+  z-index: 50;
+  background-color: #eeeeee;
+  border-bottom: 1px solid rgb(174, 174, 174);
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin: 0.5rem 0.35rem;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', serif;
 }

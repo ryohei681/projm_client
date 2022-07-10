@@ -5,14 +5,16 @@ import { Alert, Button, InputLabel, Snackbar, TextField } from '@mui/material'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import styles from 'styles/Auth.module.css'
 
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from 'config/firebaseApp.config'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore'
+import { auth, firestore } from 'config/firebaseApp.config'
 import { useAuthContext } from 'lib/AuthContext'
 
 const Signup = () => {
   const router = useRouter()
   const { user } = useAuthContext()
   const isLoggedIn = !!user
+  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -20,7 +22,11 @@ const Signup = () => {
     try {
       e.preventDefault()
       await createUserWithEmailAndPassword(auth, email, password)
-      router.push('/main')
+      await updateProfile(auth.currentUser!, {
+        displayName: username,
+      })
+
+      router.push('/')
     } catch (error) {
       alert(error)
     }
@@ -28,12 +34,19 @@ const Signup = () => {
   const handleClose = async () => {
     await router.push('/')
   }
+
+  const handleChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.currentTarget.value)
+  }
+
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value)
   }
+
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value)
   }
+
   return (
     <div className={styles.signup}>
       {/* <Snackbar
@@ -52,7 +65,17 @@ const Signup = () => {
       ></AccountCircleOutlinedIcon>
       <h1 className={styles.signupTitle}>Sign up</h1>
       <form className={styles.signupForm} onSubmit={handleSubmit}>
-        <div>
+        <div className={styles.usernameBoxPosition}>
+          <input
+            className={styles.usernameBox}
+            type="text"
+            name="username"
+            placeholder="username"
+            onChange={handleChangeUsername}
+            required
+          ></input>
+        </div>
+        <div className={styles.emailBoxPosition}>
           <input
             className={styles.emailBox}
             type="email"
@@ -62,7 +85,7 @@ const Signup = () => {
             required
           ></input>
         </div>
-        <div>
+        <div className={styles.passwordBoxPosition}>
           <input
             className={styles.passwordBox}
             type="password"
@@ -79,7 +102,7 @@ const Signup = () => {
         </div>
         <div className={styles.alreadySignup}>
           すでに登録している人は
-          <Link href={'/login'}>
+          <Link href={'/signin'}>
             <a>こちら</a>
           </Link>
         </div>

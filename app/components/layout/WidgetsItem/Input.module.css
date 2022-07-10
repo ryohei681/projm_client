@@ -1,0 +1,109 @@
+.inputPosition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.widgetsTitle {
+  margin-top: 1.4rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #4a5568;
+}
+
+.input {
+  display: flex;
+  padding: 1.3rem 1.75rem;
+  width: 100%;
+}
+
+.post {
+  width: 100%;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.textareaPosition {
+  padding: 0 1.2rem;
+}
+
+.intextareaPosition {
+  padding: 0 1.2rem;
+
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.description,
+.url {
+  width: 100%;
+  border: none;
+  resize: none;
+  outline: none;
+  background-color: #eeeeee;
+  font-size: 1.025rem;
+  letter-spacing: 0.025em;
+  min-height: 80px;
+  color: #4a5568;
+  border-bottom: 1px solid rgb(174, 174, 174);
+}
+
+.url {
+  border-bottom: 1px solid rgb(174, 174, 174);
+  min-height: 22px;
+  margin-top: 1rem;
+}
+
+.description::placeholder,
+.url::placeholder {
+  color: #a0aec0;
+}
+
+.postBtnPosition {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+
+.postBtn,
+.inpostBtn {
+  background-color: #28b492;
+  color: #fff;
+  border: 2px solid #28b492;
+  width: 6rem;
+  height: 2.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.postBtn:hover,
+.inpostBtn:hover {
+  background-color: #fff;
+  color: #28b492;
+
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.postBtn:disabled,
+.inpostBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #28b492;
+  color: #fff;
+}

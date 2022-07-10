@@ -3,6 +3,62 @@
   position: fixed;
   height: 100%;
 }
+
+.postBtnPosition {
+  margin-top: 1rem;
+  margin-left: -1.5rem;
+}
+
+.postBtn {
+  background-color: #28b492;
+  color: #fff;
+  border: 2px solid #28b492;
+  width: 10rem;
+  height: 3rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  display: none;
+}
+
+.postBtn:hover {
+  background-color: #fff;
+  color: #28b492;
+
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.signOut,
+.signIn {
+  font-size: 1.25rem;
+  /* border-bottom: 1px solid rgb(0, 0, 0); */
+  margin-top: 2.25rem;
+  margin-left: 0.3rem;
+  padding: 0.75rem 0.5rem;
+
+  cursor: pointer;
+  border-radius: 9999px;
+  width: auto;
+  height: auto;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+  display: none;
+}
+
+.signOut:hover,
+.signIn:hover {
+  background-color: #c7ced7;
+}
+
 @media screen and (min-width: 640px) {
   .sidebar {
     display: flex;
@@ -18,5 +74,12 @@
   }
   .sidebarMenuItems {
     align-items: flex-start;
+  }
+  .postBtn {
+    display: inline;
+  }
+  .signOut,
+  .signIn {
+    display: inline;
   }
 }

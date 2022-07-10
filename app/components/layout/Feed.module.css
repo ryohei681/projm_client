@@ -2,7 +2,7 @@
   border-left: 1px solid rgb(174, 174, 174);
   border-right: 1px solid rgb(174, 174, 174);
   flex-grow: 1;
-  max-width: 850px;
+  max-width: 600px;
 }
 
 @media screen and (min-width: 640px) {
@@ -14,7 +14,7 @@
 @media screen and (min-width: 1280px) {
   .feed {
     margin-left: 310px;
-    min-width: 670px;
+    min-width: 600px;
   }
 }
 
@@ -29,5 +29,8 @@
 
 .title {
   font-weight: 700;
+  font-size: 1.7rem;
+  margin: 0.5rem 0.35rem;
   cursor: pointer;
+  font-family: 'Cormorant Garamond', serif;
 }

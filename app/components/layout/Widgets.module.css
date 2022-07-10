@@ -1,6 +1,10 @@
 .widgets {
   display: none;
   width: 370px;
+  position: sticky;
+  flex: 1;
+  top: 0;
+  height: 500px;
 }
 
 @media screen and (min-width: 1280px) {

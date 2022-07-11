@@ -22,7 +22,7 @@
   position: sticky;
   padding: 0.5rem 0.75rem;
   top: 0;
-  z-index: 50;
+  /* z-index: 50; */
   background-color: #eeeeee;
   border-bottom: 1px solid rgb(174, 174, 174);
 }

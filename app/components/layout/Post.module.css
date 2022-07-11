@@ -43,6 +43,15 @@
   text-decoration: underline;
 }
 
+.url {
+  margin-left: 0.5rem;
+}
+
+.heart {
+  display: flex;
+  align-items: center;
+}
+
 .icons {
   display: flex;
   justify-content: flex-end;
@@ -66,4 +75,14 @@
 .icon:hover {
   background-color: #c7ced7;
   color: #28b492;
+}
+
+.changeIcon {
+  color: #e53e3e;
+}
+
+.totalLikes {
+  color: #e53e3e;
+  user-select: none;
+  font-size: 0.875rem;
 }

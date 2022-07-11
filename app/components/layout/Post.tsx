@@ -1,15 +1,26 @@
+import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined'
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { Avatar } from '@mui/material'
-import { DocumentData, QueryDocumentSnapshot } from 'firebase/firestore'
+import {
+  setDoc,
+  deleteDoc,
+  DocumentData,
+  QueryDocumentSnapshot,
+  onSnapshot,
+  QuerySnapshot,
+  doc,
+  collection,
+} from 'firebase/firestore'
 import Moment from 'react-moment'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import router from 'next/router'
 import { useAuthContext } from 'lib/AuthContext'
 import styles from './Post.module.css'
 import Link from 'next/link'
+import { firestore } from 'config/firebaseApp.config'
 
 type Props = {
   post: QueryDocumentSnapshot<DocumentData>
@@ -17,6 +28,45 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   const { user } = useAuthContext()
+  const isLoggedIn = !!user
+  const [likes, setLikes] = useState<QueryDocumentSnapshot<DocumentData>[]>([])
+  const [comments, setComments] = useState([])
+  const [hasLiked, setHasLiked] = useState(false)
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(firestore, 'posts', post.id, 'likes'),
+      (snapshot: QuerySnapshot<DocumentData>) => setLikes(snapshot.docs),
+    )
+  }, [firestore])
+
+  useEffect(() => {
+    setHasLiked(likes.findIndex((like) => like.id === user?.uid) !== -1)
+  }, [likes, user])
+
+  async function likePost() {
+    if (isLoggedIn) {
+      if (hasLiked) {
+        await deleteDoc(doc(firestore, 'posts', post.id, 'likes', user?.uid))
+      } else {
+        await setDoc(doc(firestore, 'posts', post.id, 'likes', user?.uid), {
+          username: user?.displayName,
+        })
+      }
+    } else {
+      // signIn();
+      router.push('/auth/signin')
+    }
+  }
+
+  async function deletePost() {
+    if (window.confirm('この投稿を削除しても良いですか?')) {
+      deleteDoc(doc(firestore, 'posts', post.id))
+
+      router.push('/')
+    }
+  }
+
   return (
     <div className={styles.post}>
       {/* {user image} */}
@@ -45,7 +95,10 @@ const Post = ({ post }: Props) => {
           {post.data().description}
         </p>
         <p>
-          <a href={post.data().url}>{post.data().url}</a>
+          url:
+          <a className={styles.url} href={post.data().url}>
+            {post.data().url}
+          </a>
         </p>
 
         {/* {icons} */}
@@ -54,10 +107,31 @@ const Post = ({ post }: Props) => {
             <ChatOutlinedIcon className={styles.icon} />
           </div>
           {user?.uid === post.data().id && (
-            <DeleteForeverOutlinedIcon className={styles.icon} />
+            <DeleteForeverOutlinedIcon
+              onClick={deletePost}
+              className={styles.icon}
+            />
           )}
-          <div>
-            <FavoriteBorderOutlinedIcon className={styles.icon} />
+          <div className={styles.heart}>
+            {hasLiked ? (
+              <FavoriteIcon
+                className={`${styles.icon} ${styles.changeIcon}`}
+                onClick={likePost}
+              />
+            ) : (
+              <FavoriteBorderOutlinedIcon
+                className={styles.icon}
+                onClick={likePost}
+              />
+            )}
+            {likes.length > 0 && (
+              <span
+                className={hasLiked ? styles.totalLikes : styles.intotalLikes}
+              >
+                {' '}
+                {likes.length}
+              </span>
+            )}
           </div>
         </div>
       </div>
